@@ -1,0 +1,2 @@
+# easygo
+npm 包
