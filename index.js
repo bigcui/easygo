@@ -1,4 +1,4 @@
 function sayHelloWorld() {
-    console.log("Hello world !");
+    console.log("Hellos world !");
 }
 module.exports = sayHelloWorld;
