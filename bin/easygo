@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+var chalk = require('chalk');
+require('commander')
+	.version(require('../package').version)
+	.usage('<command> [options]')
+	.command('init', chalk.green('初始化easygo项目'))
+	.command('add', chalk.green('添加一个easygo网页'))
+	.command('addelement', chalk.green('添加一个easygo组件'))
+	.command('validate', chalk.green('验证easygo网页'))
+	.command('validateelement', chalk.green('验证easygo组件'))
+	.command('server', chalk.green('启动easygo调试服务器'))
+	.command('update', chalk.green('更新cli模块'))
+	.command('custom', chalk.green('编译定制化easygo'))
+	.parse(process.argv)

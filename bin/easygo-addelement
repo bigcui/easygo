@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+const cli = require('../lib/cli');
+
+const args = cli.setup({
+    usage: '<element-name>',
+    options: [
+        ['-f, --force', '是否覆盖'],
+        ['-c, --custom', '是否生成定制化 easygo 组件']
+    ],
+    help: [
+        '  Examples:',
+        cli.chalk.gray('    # 添加一 easygo组件'),
+        '    $ easygo add easygo-element',
+        cli.chalk.gray('    # 添加一个定制化 easygo 组件'),
+        '    $ easygo add easygo-element -c',
+    ].join('\n')
+});
+
+var elementName = args[0];
+
+if (!elementName.match(/easygo-[\w\-]+$/)) {
+    cli.warn('请输入合法组件名称 easygo-xxx !');
+    return;
+}
+
+
+// 检查模板更新后启动命令
+require('../lib/update').exec().then(() => {
+    require('../lib/add-element').exec({
+        elementName: elementName,
+        force: cli.program.force,
+        custom: cli.program.custom
+    });
+});

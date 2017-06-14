@@ -1,28 +1,67 @@
 {
-    "name": "easygo",
-    "version": "1.0.0",
-    "description": "vue cli ",
-    "main": "index.js",
-    "scripts": {
-        "test": "make test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/bigcui/easygo.git"
-    },
-    "keywords": [
-        "vue",
-        "easygo"
-    ],
-    "dependencies": {
-        "mocha": "1.18.2",
-        "should": "3.3.0",
-        "mongodb": "1.3.19"
-    }
-    "author": "cuihonglei <cuihonglei@163.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/bigcui/easygo/issues"
-    },
-    "homepage": "https://github.com/bigcui/easygo#readme"
+  "name": "easygo",
+  "version": "1.0.0",
+  "description": "vue cli ",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --port 8000 ",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigcui/easygo.git"
+  },
+  "keywords": [
+    "vue",
+    "easygo"
+  ],
+  "dependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-env": "^1.5.1",
+    "bluebird": "^3.5.0",
+    "chalk": "^1.1.1",
+    "child_process": "^1.0.2",
+    "chokidar": "^1.6.1",
+    "commander": "^2.9.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "easy-cli-boilerplate": "^1.0.0",
+    "etpl": "^3.2.0",
+    "express": "^4.14.0",
+    "fecs": "^1.2.2",
+    "file-loader": "^0.9.0",
+    "fs": "^0.0.1-security",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "livereload": "^0.5.0",
+    "mip-cli-boilerplate": "^1.0.8",
+    "mip-extension-optimizer": "^1.1.1",
+    "mip-extension-validator": "^1.0.9",
+    "mip-processor-md5": "^1.0.0",
+    "mip-validator": "^1.2.13",
+    "mocha": "1.18.2",
+    "mongodb": "1.3.19",
+    "node-sass": "^4.5.0",
+    "request": "^2.75.0",
+    "require-all": "^2.2.0",
+    "sass-loader": "^5.0.1",
+    "shelljs": "^0.7.8",
+    "should": "3.3.0",
+    "vue": "^2.3.4",
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.3.2",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "author": "cuihonglei <cuihonglei@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bigcui/easygo/issues"
+  },
+  "homepage": "https://github.com/bigcui/easygo#readme",
+  "devDependencies": {
+    "cross-env": "^3.2.4"
+  }
 }
