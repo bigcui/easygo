@@ -14,7 +14,4 @@ const args = cli.setup({
     ].join('\n')
 });
 
-require('../lib/init').exec({
-    force: cli.program.force,
-    custom: cli.program.custom
-});
+cli.warn('开发中');

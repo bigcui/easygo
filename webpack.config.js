@@ -2,35 +2,38 @@
  * @file: file
  * @author: cuihonglei(cuihonglei2xj@gmail.com)
  * @Date: 2017-06-15 00:56:57
-*/
-
-var path = require('path');
-var webpack = require('webpack');
-var ips = require('./lib/util/get-ip-address.js');
-
+ */
+let path = require('path');
+let webpack = require('webpack');
+const ips = require('./lib/util/get-ip-address.js');
+const srcDir = path.resolve('./');
+const targetpath = require('./lib/path.json');
+const watchbox = require('./lib/util/watch.js');
+// watch 开发路由
+watchbox.exec(targetpath.path);
 module.exports = {
     entry: './main.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, './dev'),
+        publicPath: '/dev/',
         filename: 'build.js'
     },
     module: {
         rules: [{
-            test: /\.vue$/,
-            loader: 'vue-loader',
-            options: {
-                loaders: {
-                    // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-                    // the "scss" and "sass" values for the lang attribute to the right configs here.
-                    // other preprocessors should work out of the box, no loader config like this necessary.
-                    scss: 'vue-style-loader!css-loader!sass-loader',
-                    sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-                    less: 'vue-style-loader!css-loader!less-loader?indentedSyntax'
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
+                        // the "scss" and "sass" values for the lang attribute to the right configs here.
+                        // other preprocessors should work out of the box, no loader config like this necessary.
+                        scss: 'vue-style-loader!css-loader!sass-loader',
+                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+                        less: 'vue-style-loader!css-loader!less-loader?indentedSyntax'
+                    }
+                    // other vue-loader options go here
                 }
-                // other vue-loader options go here
-            }
-        },
+            },
             {test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/}, {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -52,7 +55,8 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         noInfo: true,
-        host: ips()
+        host: ips(),
+        contentBase: path.join(__dirname, '/')
     },
     performance: {
         hints: false
@@ -60,23 +64,3 @@ module.exports = {
     devtool: '#eval-source-map'
 };
 
-if (process.env.NODE_ENV === 'production') {
-    module.exports.devtool = '#source-map';
-    // http://vue-loader.vuejs.org/en/workflow/production.html
-    module.exports.plugins = (module.exports.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
-        })
-    ]);
-}

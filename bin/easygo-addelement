@@ -6,14 +6,13 @@ const args = cli.setup({
     usage: '<element-name>',
     options: [
         ['-f, --force', '是否覆盖'],
-        ['-c, --custom', '是否生成定制化 easygo 组件']
+        ['-c, --custom', '是否生成定制化 ara 组件']
     ],
     help: [
         '  Examples:',
-        cli.chalk.gray('    # 添加一 easygo组件'),
+        cli.chalk.gray('    # 添加一 ara组件'),
         '    $ easygo add easygo-element',
-        cli.chalk.gray('    # 添加一个定制化 easygo 组件'),
-        '    $ easygo add easygo-element -c',
+
     ].join('\n')
 });
 
@@ -24,12 +23,8 @@ if (!elementName.match(/easygo-[\w\-]+$/)) {
     return;
 }
 
-
-// 检查模板更新后启动命令
-require('../lib/update').exec().then(() => {
-    require('../lib/add-element').exec({
-        elementName: elementName,
-        force: cli.program.force,
-        custom: cli.program.custom
-    });
+require('../lib/add-element').exec({
+    elementName: elementName,
+    force: cli.program.force,
+    custom: cli.program.custom
 });

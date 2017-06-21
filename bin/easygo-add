@@ -15,9 +15,9 @@ const args = cli.setup({
     ].join('\n')
 });
 
-var fileName = args[0];
-var modules = args.slice(1).filter((module) => {
-    return module.match(/^mip-[\w\-]+$/);
+let fileName = args[0];
+let modules = args.slice(1).filter((module) => {
+    return module.match(/^easygo-[\w\-]+$/);
 });
 
 if (!fileName.match(/^[\w\.\-$]+$/)) {
@@ -26,13 +26,11 @@ if (!fileName.match(/^[\w\.\-$]+$/)) {
 }
 
 // 检查模板更新后启动命令
-require('../lib/update').exec().then(() => {
+
     require('../lib/add').exec({
         fileName: fileName,
         force: cli.program.force,
         custom: cli.program.custom,
         modules: modules
     });
-}, (e) => {
-    console.error(e);
-});
+

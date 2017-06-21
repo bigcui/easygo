@@ -1,0 +1,40 @@
+
+{
+    "name": "${name}",
+    "title": "文字",
+    "type": "${name}",
+    "group": "third",
+    "propeditor": ["rich-editor", "margins", "elink", "props-table"],
+    "properties": [{
+        "name": "content",
+        "value": "内容"
+    }, {
+        "name": "href",
+        "value": {
+            "type": "none",
+            "page": "",
+            "pageParams": [{
+                "name": "",
+                "value": ""
+            }],
+            "url": "",
+            "phone": "",
+            "pages": []
+        }
+    }, {
+        "name": "margin",
+        "value": "0px 0px 0px 0px"
+    }, {
+        "name": "width",
+        "value": "80px"
+    }, {
+        "name": "height",
+        "value": "40px"
+    }, {
+        "name": "backgroundColor",
+        "value": "transparent"
+    }, {
+        "name": "visible",
+        "value": "true"
+    }]
+}

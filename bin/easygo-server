@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
+require('babel-polyfill');
+require('babel-register');
 const cli = require('../lib/cli');
 const fs = require('fs');
 const path = require('path');
-const boilerplate = require('mip-cli-boilerplate');
 const shell = require("shelljs");
-
+const vue = require("../lib/vue")
 const args = cli.setup({
     noArgs: true,
     options: [
@@ -14,32 +15,17 @@ const args = cli.setup({
         ['-l, --livereload <value>', '启用调试自动刷新']
     ],
     help: [
-          '启动MIP调试服务器',
-          '    $ mip server',
-      ].join('\n')
+        '启动ara调试服务器',
+        '    $ sudo ara server',
+    ].join('\n')
 });
 
-var dev = "npm run dev"
-var buid = "cross-env NODE_ENV=production webpack --progress --hide-modules"
-
-var defaultConfig = require(boilerplate.TEMPLATE_DIR + '/mip.config');
-
-defaultConfig.baseDir = process.cwd();
-
-console.log(process.cwd());
-
-var configPath = path.join(defaultConfig.baseDir, 'mip.config');
-
-// // 加载用户定义配置
-// if (fs.existsSync(configPath)) {
-
-//     Object.assign(defaultConfig, require(configPath));
-//     // 设置是否extensions目录，用于调试时启用不同的配置
-//     defaultConfig.isExtensionsDir = defaultConfig.extensionsDir === '.';
-
-// }
+let dev = "sudo npm run dev";
+// 生成vue
 
 
+
+let pa = path.resolve(__dirname, '../');
 // cli 配置
 if (cli.program.port) {
     defaultConfig.port = cli.program.port;
@@ -50,16 +36,21 @@ if (cli.program.port) {
 // 强制启动，关闭占用端口的进程
 if (cli.program.force) {
     require('../lib/util/kill-process-byport')({
-        port: defaultConfig.port
-    })
+            port: defaultConfig.port
+        })
         .then(() => {
             shell.exec(dev);
         }, error => {
             cli.error(error);
         });
-}
-else {
-    //
-    shell.exec(dev);
-}
+} else {
+    //[]
 
+    vue().then(function(result) {
+        shell.cd(pa)
+        shell.exec(dev);
+    }).catch(function(error) {
+        console.log(error);
+    });
+
+}

@@ -1,13 +1,18 @@
 <template>
   <div id="app">
 
-  
+  {%for: ${components} as  ${file} , ${index}%}
+    ${index}
+        <div ref="${index}f"></div>
+      {%/for%}
 
   </div>
 </template>
 <script>
 import Vue from 'vue';
-
+{%for: ${components} as  ${file} , ${index}%}
+import ${index} from './dev/${file}/index.vue';
+{%/for%}
 
 export default {
   name: 'app',
@@ -18,7 +23,12 @@ export default {
   },
 
     mounted() {
-      
+      {%for: ${components} as ${file} , ${index}%}
+          let comp${index} = ${index};
+          comp${index}.propsData = comp${index}.json.props
+          let newComp${index} = new Vue(comp${index});
+          newComp${index}.$mount(this.$refs.${index}f)
+      {%/for%}
     }
 }
 </script>
