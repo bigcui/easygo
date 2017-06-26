@@ -9,6 +9,6 @@ require('commander')
 	.command('addelement', chalk.green('添加一个ara组件'))
 	.command('validate', chalk.green('验证ara网页'))
 	.command('validateelement', chalk.green('验证ara组件'))
-	.command('server', chalk.green('启动ara调试服务器'))
+	.command('server', chalk.green('(sudo)启动ara调试服务器'))
 	.parse(process.argv)
 

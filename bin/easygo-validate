@@ -3,17 +3,20 @@
 const cli = require('../lib/cli');
 
 const args = cli.setup({
-    noArgs: true,
+    usage: '<page-name>',
     options: [
-        ['-f, --force', '强制初始化'],
-        ['-c, --custom', '初始化定制化 ara']
     ],
     help: [
-        '初始化ara页面项目',
-        '    $ ara init',
+        '    Examples:',
+        cli.chalk.gray('    # 验证easygo页面'),
+        '        $ easygo validate page.html',
     ].join('\n')
 });
 
-require('../lib/validate').exec({
-    file:args[0]
-})
+let fileName = args[0];
+    require('../lib/validate').exec({
+        file: fileName
+    });
+
+
+

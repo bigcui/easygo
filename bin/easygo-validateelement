@@ -3,22 +3,22 @@
 const cli = require('../lib/cli');
 
 const args = cli.setup({
-    noArgs: true,
+    usage: '<element-name>',
     options: [
-        ['-f, --force', '强制初始化'],
-        ['-c, --custom', '初始化定制化 ara']
     ],
     help: [
-        '初始化ara页面项目',
-        '    $ ara init',
+        '    Examples:',
+        cli.chalk.gray('    # 验证一个easygo组件'),
+        '        $ easygo validateement easygo-**',
     ].join('\n')
 });
 
-if(args.length>0){
-  require('../lib/validate-element').exec({
-    file:args[0]
-  })
-}else{
-    cli.warn('请输入要验证组件名称!');
-    return;
-}
+let fileName = args[0];
+// 检查模板更新后启动命令
+
+    require('../lib/validate-element').exec({
+        file: fileName
+    });
+
+
+

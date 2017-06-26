@@ -5,8 +5,8 @@ const cli = require('../lib/cli');
 const args = cli.setup({
     usage: '<page-name> [element-name...]',
     options: [
-        ['-f, --force', '是否覆盖'],
-        ['-c, --custom', '生成定制化 easygo 测试页面']
+        ['-f, --force', '是否覆盖']
+
     ],
     help: [
         '    Examples:',
