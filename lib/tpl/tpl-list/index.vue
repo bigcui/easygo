@@ -4,10 +4,10 @@
 </template>
 <script>
 import util from '../common/util';
-
 import config from './index.json';
 import submit from '../common/submit';
 let {json, props} = util.getDataProps(config);
+export {json, props};
 export default {
     json: json,
     props: props,

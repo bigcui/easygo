@@ -2,7 +2,7 @@
   <div id="app">
 
   {%for: ${components} as  ${file} , ${index}%}
-    ${index}
+
         <div ref="${index}f"></div>
       {%/for%}
 

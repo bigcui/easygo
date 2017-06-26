@@ -14,4 +14,6 @@ const args = cli.setup({
     ].join('\n')
 });
 
-cli.warn('开发中');
+require('../lib/validate').exec({
+    file:args[0]
+})

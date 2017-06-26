@@ -7,7 +7,7 @@
     "propeditor": ["rich-editor", "margins", "elink", "props-table"],
     "properties": [{
         "name": "content",
-        "value": "内容"
+        "value": "测试内容"
     }, {
         "name": "href",
         "value": {

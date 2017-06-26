@@ -16,9 +16,6 @@ const args = cli.setup({
 });
 
 let fileName = args[0];
-let modules = args.slice(1).filter((module) => {
-    return module.match(/^easygo-[\w\-]+$/);
-});
 
 if (!fileName.match(/^[\w\.\-$]+$/)) {
     cli.warn('请输入合法文件名称!');
@@ -29,8 +26,7 @@ if (!fileName.match(/^[\w\.\-$]+$/)) {
 
     require('../lib/add').exec({
         fileName: fileName,
-        force: cli.program.force,
-        custom: cli.program.custom,
-        modules: modules
+        force: cli.program.force
+
     });
 

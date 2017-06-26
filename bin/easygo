@@ -10,7 +10,5 @@ require('commander')
 	.command('validate', chalk.green('验证ara网页'))
 	.command('validateelement', chalk.green('验证ara组件'))
 	.command('server', chalk.green('启动ara调试服务器'))
-	.command('update', chalk.green('更新cli模块'))
-	.command('custom', chalk.green('编译定制化ara'))
 	.parse(process.argv)
 
