@@ -9,6 +9,7 @@ const ips = require('./lib/util/get-ip-address.js');
 const srcDir = path.resolve('./');
 const targetpath = require('./lib/path.json');
 const watchbox = require('./lib/util/watch.js');
+var node_dir = __dirname + '/node_modules';
 // watch 开发路由
 watchbox.exec(targetpath.path);
 module.exports = {
@@ -47,9 +48,18 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jquery: "jQuery",
+            "windows.jQuery": "jquery"
+        })
+
+    ],
     resolve: {
         alias: {
-            vue$: 'vue/dist/vue.esm.js'
+            vue$: 'vue/dist/vue.esm.js',
+            'jquery': node_dir + '/jquery/dist/jquery.js',
         }
     },
     devServer: {
@@ -61,6 +71,7 @@ module.exports = {
     performance: {
         hints: false
     },
+
     devtool: '#eval-source-map'
 };
 

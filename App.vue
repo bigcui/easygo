@@ -1,14 +1,17 @@
 <template>
   <div id="app">
 
-  
+ dsdsdsdsdsds22
+
+        <div ref="easygoDemof"></div>
+
 
   </div>
 </template>
 <script>
 import Vue from 'vue';
 
-
+console.log($);
 export default {
   name: 'app',
   data () {
@@ -18,11 +21,16 @@ export default {
   },
 
     mounted() {
-      
+
+    $.ajax({url:"/jquery/test1.txt",async:false})
+
     }
 }
 </script>
 <style lang="less">
+body{
+  background:red;
+}
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
